@@ -12,12 +12,4 @@ public class AwardsDTO {
     public static class AwardsRegisterDTO {
         private String contents;
     }
-
-    @Getter
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class AwardsRegisterDTO2 {
-        private String contents;
-    }
 }
