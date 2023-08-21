@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AwardsRepository extends JpaRepository<Awards, Long> {
-
+    Awards findFirstByOrderByIdDesc();
 }

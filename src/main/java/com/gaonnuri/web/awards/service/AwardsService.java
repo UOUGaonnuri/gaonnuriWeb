@@ -4,4 +4,5 @@ import com.gaonnuri.web.awards.dto.AwardsDTO;
 
 public interface AwardsService {
     Boolean registerAwards(AwardsDTO.AwardsRegisterDTO awardsRegister);
+    AwardsDTO.AwardsGetResponseDTO getAwards();
 }

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class AwardsServiceImpl implements AwardsService {
     private final AwardsRepository awardsRepository;
+
     @Override
     public Boolean registerAwards(AwardsDTO.AwardsRegisterDTO awardsRegister){
         Awards awards = Awards.builder()
@@ -22,5 +23,14 @@ public class AwardsServiceImpl implements AwardsService {
                 .build();
         awardsRepository.save(awards);
         return true;
+    }
+
+    @Override
+    public AwardsDTO.AwardsGetResponseDTO getAwards(){
+        Awards awards = awardsRepository.findFirstByOrderByIdDesc();
+        AwardsDTO.AwardsGetResponseDTO result = AwardsDTO.AwardsGetResponseDTO.builder()
+                .contents(awards.getContents())
+                .build();
+        return result;
     }
 }

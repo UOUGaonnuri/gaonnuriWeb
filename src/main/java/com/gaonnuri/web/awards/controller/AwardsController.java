@@ -1,14 +1,12 @@
 package com.gaonnuri.web.awards.controller;
 
+import com.gaonnuri.web.awards.dto.AwardsDTO;
 import com.gaonnuri.web.awards.repository.AwardsRepository;
 import com.gaonnuri.web.awards.service.AwardsService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -18,16 +16,15 @@ public class AwardsController {
     private final AwardsService awardsService;
 
     @PostMapping("/add")
-    public String addAward() {
-
-        log.info("success addAward");
-        return "success addAward";
+    public Boolean addAward(@RequestBody AwardsDTO.AwardsRegisterDTO awardsRegisterDTO) {
+        Boolean result = awardsService.registerAwards(awardsRegisterDTO);
+        return result;
     }
 
     @GetMapping("/get")
-    public String getAward() {
-        log.info("success getAward");
-        return "success getAward";
+    public AwardsDTO.AwardsGetResponseDTO getAward() {
+        AwardsDTO.AwardsGetResponseDTO result = awardsService.getAwards();
+        return result;
     }
 
 }
