@@ -16,6 +16,6 @@ public class Awards extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(length = 1500, nullable = false)
     private String contents;
 }
