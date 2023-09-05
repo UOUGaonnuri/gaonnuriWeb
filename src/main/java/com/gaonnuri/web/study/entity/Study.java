@@ -20,7 +20,9 @@ public class Study extends BaseEntity {
     @Column(nullable = false)
     private String studyTitle;
 
-    @Column(nullable = false)
+    @Column
     private String studyImage;
 
+    @Column(nullable = false)
+    private String studyTime;
 }
