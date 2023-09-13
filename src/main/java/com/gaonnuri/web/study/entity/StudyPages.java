@@ -1,6 +1,7 @@
 package com.gaonnuri.web.study.entity;
 
 import com.gaonnuri.web.awards.entity.BaseEntity;
+import com.gaonnuri.web.study.dto.StudyDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,4 +27,9 @@ public class StudyPages extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "study")
     private Study study;
+
+    public void update(StudyDto.StudyPagesModifyDTO studyPagesModifyDTO){
+        this.studyPageName = studyPagesModifyDTO.getTitle();
+        this.studyPageContent = studyPagesModifyDTO.getContents();
+    }
 }

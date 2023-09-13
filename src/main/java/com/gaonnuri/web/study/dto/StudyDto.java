@@ -34,6 +34,7 @@ public class StudyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyResponseDTO {
+        private Long studyId;
         private String studyTitle;
         private String studyImage;
         private String studyTime;
@@ -44,9 +45,49 @@ public class StudyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyPagesResponseDTO {
+        private Long studyPageId;
         private String studyPageName;
         private String studyPageContent;
         private Long studyId;
         private String studyTitle;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class studyListDTO {
+        private Long studyId;
+        private String studyName;
+        private String studyTime;
+        private String studyImage;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class studyPagesListDTO {
+        private Long studyPagesId;
+        private String studyPageName;
+        private String studyPageContent;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class StudyModifyDTO {
+        private String title;
+        private String imageUrl;
+        private String time;
+    }
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class StudyPagesModifyDTO {
+        private String title;
+        private String contents;
     }
 }

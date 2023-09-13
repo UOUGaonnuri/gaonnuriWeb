@@ -6,19 +6,27 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/studyPage")
 @RequiredArgsConstructor
 @Slf4j
 public class StudyPagesController {
     private final StudyPagesService studyPagesService;
-    @PostMapping("/{boardId}/add")
-    public Boolean addStudyPages(@PathVariable(value = "boardId") Long boardId, @RequestBody StudyDto.StudyPagesRegisterDTO studyPagesRegisterDTO) {
-        Boolean result = studyPagesService.registerStudyPages(boardId,studyPagesRegisterDTO);
+    @PostMapping("/add/{studyId}")
+    public Boolean addStudyPages(@PathVariable(value = "studyId") Long studyId, @RequestBody StudyDto.StudyPagesRegisterDTO studyPagesRegisterDTO) {
+        Boolean result = studyPagesService.registerStudyPages(studyId,studyPagesRegisterDTO);
         return result;
     }
 
-    @GetMapping("/{studyPagesId}")
+    @PostMapping("/modify/{studyPagesId}")
+    public Boolean modifyStudyPages(@PathVariable(value = "studyPagesId") Long studyPagesId, @RequestBody StudyDto.StudyPagesModifyDTO studyPagesModifyDTO) {
+        Boolean result = studyPagesService.modifyStudyPages(studyPagesId,studyPagesModifyDTO);
+        return result;
+    }
+
+    @GetMapping("/detail/{studyPagesId}")
     public StudyDto.StudyPagesResponseDTO studyPagesDetail(@PathVariable Long studyPagesId){
         StudyDto.StudyPagesResponseDTO result = studyPagesService.studyDetail(studyPagesId);
         return result;
@@ -27,6 +35,12 @@ public class StudyPagesController {
     @DeleteMapping("/delete/{studyPagesId}")
     public Boolean deleteStudyPages(@PathVariable Long studyPagesId){
         Boolean result = studyPagesService.deleteStudyPages(studyPagesId);
+        return result;
+    }
+
+    @GetMapping("/{studyId}")
+    public List<StudyDto.studyPagesListDTO> studyPagesList(@PathVariable Long studyId){
+        List<StudyDto.studyPagesListDTO> result = studyPagesService.studyPagesAll(studyId);
         return result;
     }
 }
