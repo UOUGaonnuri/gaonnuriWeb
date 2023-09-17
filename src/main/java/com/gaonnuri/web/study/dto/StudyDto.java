@@ -18,6 +18,7 @@ public class StudyDto {
         private String title;
         private String imageUrl;
         private String time;
+        private Long state;
     }
 
     @Getter
@@ -38,6 +39,7 @@ public class StudyDto {
         private String studyTitle;
         private String studyImage;
         private String studyTime;
+        private Long studyState;
     }
 
     @Getter
@@ -61,6 +63,7 @@ public class StudyDto {
         private String studyName;
         private String studyTime;
         private String studyImage;
+        private Long studyState;
     }
 
     @Getter
@@ -81,6 +84,7 @@ public class StudyDto {
         private String title;
         private String imageUrl;
         private String time;
+        private Long state;
     }
     @Getter
     @Builder

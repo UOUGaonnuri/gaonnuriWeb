@@ -8,6 +8,7 @@ import com.gaonnuri.web.study.repository.StudyRepository;
 import com.gaonnuri.web.study.service.StudyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,7 @@ public class StudyServiceImpl implements StudyService {
                 .studyTitle(studyRegister.getTitle())
                 .studyImage(studyRegister.getImageUrl())
                 .studyTime(studyRegister.getTime())
+                .studyState(studyRegister.getState())
                 .build();
         studyRepository.save(study);
         return true;
@@ -39,6 +41,7 @@ public class StudyServiceImpl implements StudyService {
         studyRepository.save(study);
         return true;
     }
+
     @Override
     public Boolean deleteStudy(Long studyId){
         Study study = studyRepository.findByStudyId(studyId);
@@ -53,13 +56,14 @@ public class StudyServiceImpl implements StudyService {
                 .studyTitle(study.getStudyTitle())
                 .studyImage(study.getStudyImage())
                 .studyTime(study.getStudyTime())
+                .studyState(study.getStudyState())
                 .build();
         return result;
     }
 
     @Override
     public List<StudyDto.studyListDTO> studyAll(){
-        List<Study> studies = studyRepository.findAll();
+        List<Study> studies = studyRepository.findAll(Sort.by(Sort.Direction.DESC, "studyId"));
         List<StudyDto.studyListDTO>studyList = new ArrayList<>();
         for(Study study : studies){
             StudyDto.studyListDTO studyListDTO = StudyDto.studyListDTO.builder()
@@ -67,6 +71,7 @@ public class StudyServiceImpl implements StudyService {
                     .studyName(study.getStudyTitle())
                     .studyImage(study.getStudyImage())
                     .studyTime(study.getStudyTime())
+                    .studyState(study.getStudyState())
                     .build();
             studyList.add(studyListDTO);
         }

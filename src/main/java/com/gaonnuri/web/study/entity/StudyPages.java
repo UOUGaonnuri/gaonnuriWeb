@@ -7,12 +7,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name="studyPages")
+@EntityListeners(AuditingEntityListener.class)
 public class StudyPages extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +27,7 @@ public class StudyPages extends BaseEntity {
     @Column(nullable = false)
     private String studyPageContent;
 
-    @ManyToOne
-    @JoinColumn(name = "study")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Study study;
 
     public void update(StudyDto.StudyPagesModifyDTO studyPagesModifyDTO){
