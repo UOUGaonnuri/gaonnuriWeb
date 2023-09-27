@@ -15,10 +15,10 @@ public class StudyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyRegisterDTO {
-        private String title;
-        private String imageUrl;
-        private String time;
-        private Long state;
+        private String StudyName;
+        private String studyImage;
+        private String studyTime;
+        private Long studyState;
     }
 
     @Getter
@@ -26,8 +26,8 @@ public class StudyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyPagesRegisterDTO {
-        private String title;
-        private String contents;
+        private String studyPageName;
+        private String studyPageContent;
     }
 
     @Getter
@@ -36,7 +36,7 @@ public class StudyDto {
     @NoArgsConstructor
     public static class StudyResponseDTO {
         private Long studyId;
-        private String studyTitle;
+        private String StudyName;
         private String studyImage;
         private String studyTime;
         private Long studyState;
@@ -51,7 +51,7 @@ public class StudyDto {
         private String studyPageName;
         private String studyPageContent;
         private Long studyId;
-        private String studyTitle;
+        private String StudyName;
     }
 
     @Getter
@@ -81,17 +81,17 @@ public class StudyDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyModifyDTO {
-        private String title;
-        private String imageUrl;
-        private String time;
-        private Long state;
+        private String StudyName;
+        private String studyImage;
+        private String studyTime;
+        private Long studyState;
     }
     @Getter
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StudyPagesModifyDTO {
-        private String title;
-        private String contents;
+        private String studyPageName;
+        private String studyPageContent;
     }
 }

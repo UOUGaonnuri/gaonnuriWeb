@@ -26,8 +26,8 @@ public class StudyPagesServiceImpl implements StudyPagesService {
     public Boolean registerStudyPages(Long studyId, StudyDto.StudyPagesRegisterDTO studyPagesRegister){
         Study study = studyRepository.findByStudyId(studyId);
         StudyPages studyPages = StudyPages.builder()
-                .studyPageName(studyPagesRegister.getTitle())
-                .studyPageContent(studyPagesRegister.getContents())
+                .studyPageName(studyPagesRegister.getStudyPageName())
+                .studyPageContent(studyPagesRegister.getStudyPageContent())
                 .study(study)
                 .build();
         studyPagesRepository.save(studyPages);

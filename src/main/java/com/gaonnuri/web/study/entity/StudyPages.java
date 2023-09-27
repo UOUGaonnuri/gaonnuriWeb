@@ -31,7 +31,7 @@ public class StudyPages extends BaseEntity {
     private Study study;
 
     public void update(StudyDto.StudyPagesModifyDTO studyPagesModifyDTO){
-        this.studyPageName = studyPagesModifyDTO.getTitle();
-        this.studyPageContent = studyPagesModifyDTO.getContents();
+        this.studyPageName = studyPagesModifyDTO.getStudyPageName();
+        this.studyPageContent = studyPagesModifyDTO.getStudyPageContent();
     }
 }

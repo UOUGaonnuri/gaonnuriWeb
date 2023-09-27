@@ -25,7 +25,7 @@ public class Study extends BaseEntity {
     private Long studyId;
 
     @Column(nullable = false)
-    private String studyTitle;
+    private String StudyName;
 
     @Column
     private String studyImage;
@@ -40,9 +40,9 @@ public class Study extends BaseEntity {
     private Long studyState;
 
     public void update(StudyDto.StudyModifyDTO studyModifyDTO){
-        this.studyTitle = studyModifyDTO.getTitle();
-        this.studyImage = studyModifyDTO.getImageUrl();
-        this.studyTime = studyModifyDTO.getTime();
-        this.studyState = studyModifyDTO.getState();
+        this.StudyName = studyModifyDTO.getStudyName();
+        this.studyImage = studyModifyDTO.getStudyImage();
+        this.studyTime = studyModifyDTO.getStudyTime();
+        this.studyState = studyModifyDTO.getStudyState();
     }
 }

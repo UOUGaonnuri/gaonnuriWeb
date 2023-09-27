@@ -1,9 +1,7 @@
 package com.gaonnuri.web.study.service.impl;
 
-import com.gaonnuri.web.awards.entity.Awards;
 import com.gaonnuri.web.study.dto.StudyDto;
 import com.gaonnuri.web.study.entity.Study;
-import com.gaonnuri.web.study.entity.StudyPages;
 import com.gaonnuri.web.study.repository.StudyRepository;
 import com.gaonnuri.web.study.service.StudyService;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +23,10 @@ public class StudyServiceImpl implements StudyService {
     @Override
     public Boolean registerStudy(StudyDto.StudyRegisterDTO studyRegister){
         Study study = Study.builder()
-                .studyTitle(studyRegister.getTitle())
-                .studyImage(studyRegister.getImageUrl())
-                .studyTime(studyRegister.getTime())
-                .studyState(studyRegister.getState())
+                .StudyName(studyRegister.getStudyName())
+                .studyImage(studyRegister.getStudyImage())
+                .studyTime(studyRegister.getStudyTime())
+                .studyState(studyRegister.getStudyState())
                 .build();
         studyRepository.save(study);
         return true;
@@ -53,7 +51,7 @@ public class StudyServiceImpl implements StudyService {
         Study study = studyRepository.findByStudyId(studyId);
         StudyDto.StudyResponseDTO result = StudyDto.StudyResponseDTO.builder()
                 .studyId(studyId)
-                .studyTitle(study.getStudyTitle())
+                .StudyName(study.getStudyName())
                 .studyImage(study.getStudyImage())
                 .studyTime(study.getStudyTime())
                 .studyState(study.getStudyState())
@@ -68,7 +66,7 @@ public class StudyServiceImpl implements StudyService {
         for(Study study : studies){
             StudyDto.studyListDTO studyListDTO = StudyDto.studyListDTO.builder()
                     .studyId(study.getStudyId())
-                    .studyName(study.getStudyTitle())
+                    .studyName(study.getStudyName())
                     .studyImage(study.getStudyImage())
                     .studyTime(study.getStudyTime())
                     .studyState(study.getStudyState())
